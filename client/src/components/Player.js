@@ -34,8 +34,6 @@ const Player = props => {
 
   labels.forEach(el => backgroundColors.push(getRandomColor()))
 
-  console.log(backgroundColors)
-
   const datum = {
     labels: labels,
     datasets: [
@@ -51,8 +49,6 @@ const Player = props => {
       }
     ]
   };
-
-  console.log(labels)
 
   return (
     <div>

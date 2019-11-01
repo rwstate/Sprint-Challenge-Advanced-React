@@ -5,6 +5,8 @@ import * as rtl from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 import { exportAllDeclaration } from '@babel/types';
 
+const nice = 'cool'
+
 afterEach(rtl.cleanup);
 
 it('renders without crashing', () => {
@@ -14,11 +16,5 @@ it('renders without crashing', () => {
 it('renders the first name in the array', async () => {
   const { getByText } = rtl.render(<App/>)
   const element = await rtl.waitForElement(() => getByText("Alex Morgan"));
-  expect(element).toBeInTheDocument();
-})
-
-it('renders the final name in the array', async () => {
-  const { getByText } = rtl.render(<App/>)
-  const element = await rtl.waitForElement(() => getByText("Tierna Davidson"));
   expect(element).toBeInTheDocument();
 })

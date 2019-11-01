@@ -22,8 +22,6 @@ const Display = props => {
     setPlayerData(filteredArray)
   }, [props.data])
 
-  console.log(playerData)
-
   if (props.data === []) {
     return(
       <p>Loading</p>
