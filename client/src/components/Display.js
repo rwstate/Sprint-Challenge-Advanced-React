@@ -6,8 +6,23 @@ const Display = props => {
   const [playerData, setPlayerData] = useLocalStorage('players', []);
 
   useEffect(() => {
-    setPlayerData(props.data)
+    const filteredArray = []
+
+    const allowed = ['name', 'searches'];
+
+    const filtered = props.data.forEach(el => filteredArray.push(Object.keys(el)
+      .filter(key => allowed.includes(key))
+      .reduce((obj, key) => {
+        return {
+          ...obj,
+          [key]: el[key]
+        };
+      }, {})))
+
+    setPlayerData(filteredArray)
   }, [props.data])
+
+  console.log(playerData)
 
   if (props.data === []) {
     return(
@@ -17,7 +32,7 @@ const Display = props => {
 
   return (
     <div>
-      {playerData.map(el => <Player player={el}/>)}
+      <Player data={playerData} />
     </div>
   )
 }
